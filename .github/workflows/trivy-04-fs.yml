@@ -54,7 +54,7 @@ jobs:
           source zvenv/bin/activate
           pip install pip -U
           pip install bandit
-          # pip install bandit-sarif-formatter
+          pip install bandit-sarif-formatter
           ls -al
           SUBDIR=python-algorithms
           # SUBDIR=aws-dynamodb-encryption-python
