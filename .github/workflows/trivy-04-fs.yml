@@ -34,7 +34,7 @@ jobs:
           # scan-ref: 'zvenv'
           scan-ref: 'python-algorithms/'
           # list-all-pkgs: '*'
-          list-all-pkgs: true
+          # list-all-pkgs: true
           # format: 'sarif'
           # output: 'trivy-results.sarif'
           # ignore-unfixed: true
