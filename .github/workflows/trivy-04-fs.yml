@@ -60,7 +60,8 @@ jobs:
           # see .bandit for excluded/skipped vulnerabilities
           # bandit -r ${SUBDIR} --format sarif --output bandit-results.sarif
           # bandit -c pyproject.toml -r ${SUBDIR}
-          bandit -c bandit.yaml -r ${SUBDIR}
+          bandit -c bandit.yaml -r ${SUBDIR} > results.txt
+          cat results.txt
         if: ${{ '0' == '0' }}
 
       - name: Upload SARIF file
@@ -69,3 +70,10 @@ jobs:
           sarif_file: bandit-results.sarif
         if: ${{ '1' == '0' }}
         # if: always()  # when the previous step fails for so many vulnerabilities
+
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        with:
+          name: results.txt
+          path: results.txt
+        if: always()
