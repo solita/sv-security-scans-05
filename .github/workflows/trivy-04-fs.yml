@@ -25,7 +25,7 @@ jobs:
           pwd
           ls -al
           # ls -al /github/workspace/  # No such file or directory
-        if: ${{ '0' == '0' }}
+        if: ${{ '1' == '0' }}
 
       - name: Trivy scanner in fs mode
         uses: aquasecurity/trivy-action@master
@@ -44,3 +44,14 @@ jobs:
       #   uses: github/codeql-action/upload-sarif@v2
       #   with:
       #     sarif_file: 'trivy-results.sarif'
+        if: ${{ '1' == '0' }}
+
+      - name: Run Bandit
+        run: |
+          set -ux
+          python -m venv zvenv
+          source zvenv/bin/activate
+          pip install pip -U
+          pip install bandit
+          bandit -r python-algorithms
+        if: ${{ '0' == '0' }}
