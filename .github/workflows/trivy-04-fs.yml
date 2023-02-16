@@ -4,7 +4,8 @@ name: trivy-04-fs
 on:
   push:
     branches:
-      - main
+      # - main
+      - main2
       # - nonexistent  # avoid triggering on main
 jobs:
   scan:
