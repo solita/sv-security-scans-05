@@ -53,5 +53,13 @@ jobs:
           source zvenv/bin/activate
           pip install pip -U
           pip install bandit
-          bandit -r python-algorithms
+          pip install bandit-sarif-formatter
+          # bandit -r python-algorithms
+          bandit -r python-algorithms --format sarif --output bandit-results.sarif
+        if: ${{ '0' == '0' }}
+
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: bandit-results.sarif
         if: ${{ '0' == '0' }}
